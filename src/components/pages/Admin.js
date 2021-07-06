@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import '../../css/home.css'
+import '../../css/admin.css'
 
-
-const Admin = () => {
+const Home = () => {
   const [menus, setMenu] = useState([]);
 
   useEffect(() => {
-    document.title = "QR-Admin";
+    document.title = "QR-Home";
     loadMenus();
   }, []);
 
@@ -15,22 +16,40 @@ const Admin = () => {
     const result = await axios.get("http://localhost:3003/Menus");
     setMenu(result.data.reverse());
   };
-
   const deleteMenu = async id => {
     await axios.delete(`http://localhost:3003/Menus/${id}`);
     loadMenus();
   };
 
-  const [basicModal, setBasicModal] = useState(false);
-
-  const toggleShow = () => setBasicModal(!basicModal);
 
   return (
-    <div>
-      test
+    <div >
+      <div>
+        {menus.map((menu) => (
+          <div className="column">
+            <div className="content card" >
+              <Link to={`/${menu.id}`} ><img className="img-fluid " src={menu.img} /></Link>
+              <Link to={`/${menu.id}`} style={{ textDecoration: "none" }}><h2 >{menu.MenuName}</h2></Link>
+              <Link to={`/${menu.id}`} style={{ textDecoration: "none" }}><p>{menu.Description}</p></Link>
+              <Link style={{ marginBottom: '3px', textDecoration: "none" }}
+                class="btn btn-outline-primary mr-1"
+                to={`/Menus/edit/${menu.id}`}
+              >
+                <button class="button button1">Edit</button>
+              </Link>
+              <Link
+                class="btn btn-danger"
+                onClick={() => deleteMenu(menu.id)}
+              >
+                <button class="button button1">Delete</button>
+              </Link>
+
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
-                 
   );
 };
 
-export default Admin;
+export default Home;

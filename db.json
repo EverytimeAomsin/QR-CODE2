@@ -22,13 +22,6 @@
       "qr": "/qr/qr3.png"
     },
     {
-      "id": 4,
-      "MenuName": "test",
-      "Description": " Some quick example text to build on the card title and make up the bulk of the card's content 555.",
-      "img": "/image/menu2.jpg",
-      "qr": "/qr/qr3.png"
-    },
-    {
       "id": 5,
       "MenuName": "Yummy",
       "Description": " Some quick example text to build on the card title and make up the bulk of the card's content 555.",
