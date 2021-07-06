@@ -20,8 +20,9 @@ export default () => (
         <Route exact path="/" component={Home} />
         <Route  path="/Menus/edit/:Id" component={Editmenu} />
         <Route  path="/Admin" component={Admin} />
-        <Route  path="/:id" component={Monitor} />
         <Route  path="/AddMenu" component={AddMenu} />
+        <Route  path="/:id" component={Monitor} />
+       
        
 
         <Route component={NotFound} />

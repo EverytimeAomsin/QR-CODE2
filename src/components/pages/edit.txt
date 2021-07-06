@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useHistory, useParams,Link } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import '../../css/add.css'
-import '../../css/admin.css'
 
 const Editmenu = () => {
   let history = useHistory();
@@ -33,32 +32,55 @@ const Editmenu = () => {
     setUser(result.data);
   };
   return (
-    <div style={{backgroundColor:'#A2DBFA'}}>
-      <Link style={{ marginBottom: '3px', textDecoration: "none" }}
-                class="btn btn-outline-primary mr-1"
-                to={`/Admin`}
-              ><button className="button button1"  style={{ marginTop: '15px',marginLeft:'20px' }}>ย้อนกลับ</button></Link> 
-  <div className="add" style={{width:'700px'}}>
-    <h1>Add menu</h1>
-    <form onSubmit={e => onSubmit(e)}>
-      <p><input style={{width:'600px'}}
+    <div>
+      <div >
+        <div style={{ marginTop: '10px' }}>
+          <div>
+            <h3>ก่อนแก้ไข</h3>
+
+          </div></div></div>
+
+      <div className="text-center">
+
+        <div className="container py-4">
+         <h1 className="display-4">User Id: {Id}</h1> 
+
+          <div ><h2>{menu.MenuName}</h2></div>
+          <div > <img className="img-fluid " style={{ height: '150px' }} src={menu.img} /></div>
+
+        </div>
+
+      </div>
+
+      <div className="container" style={{ marginTop: '20px' }}>
+        <div className="w-75 mx-auto shadow p-5">
+          <h2 className="text-center mb-4">Edit</h2>
+          <form onSubmit={e => onSubmit(e)}>
+            <div className="form-group">
+              ชื่อร้าน
+              <input
                 type="text"
                 className="form-control form-control-lg"
                 placeholder="Enter Your Name"
                 name="MenuName"
                 value={MenuName}
                 onChange={e => onInputChange(e)}
-              /></p>
-      <p> <textarea style={{width:'600px'}}
+              />
+            </div>
+            <div className="form-group">
+              รายละเอียด
+              <input
                 type="text"
                 className="form-control form-control-lg"
                 placeholder="Enter Your Name"
                 name="Description"
                 value={Description}
                 onChange={e => onInputChange(e)}
-              /></p>
-       <p> </p>
-       <input   style={{width:'600px'}}
+              />
+            </div>
+            <div className="form-group">
+              ที่อยู่ไฟล์รูป
+              <input
                 type="text"
                 className="form-control form-control-lg"
                 placeholder="Enter Your Username"
@@ -66,14 +88,12 @@ const Editmenu = () => {
                 value={img}
                 onChange={e => onInputChange(e)}
               />
-            <div style={{flexgrow: '4'}}>
-            
             </div>
-            <button className="button button1" style={{ marginTop: '15px' }}>ทำการแก้ไข</button>
-            
-    </form>
-  </div>
-     
+
+            <button className="btn btn-warning btn-block" style={{ marginTop: '15px' }}>ทำการแก้ไข</button>
+          </form>
+        </div>
+      </div>
     </div> 
   );
 };

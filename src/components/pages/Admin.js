@@ -24,6 +24,14 @@ const Home = () => {
 
   return (
     <div >
+       <Link style={{ marginBottom: '3px', textDecoration: "none" }}
+                class="btn btn-outline-primary mr-1"
+                to={`/`}
+              ><button className="button button1"  style={{ marginTop: '15px',marginLeft:'20px' }}>กลับหน้าแรก</button></Link> 
+       <Link style={{ marginBottom: '3px', textDecoration: "none" }}
+                class="btn btn-outline-primary mr-1"
+                to={`/AddMenu`}
+              ><button className="button button1"  style={{ marginTop: '15px',marginLeft:'20px' }}>เพิ่มเมนู</button></Link> 
       <div>
         {menus.map((menu) => (
           <div className="column">
@@ -35,7 +43,7 @@ const Home = () => {
                 class="btn btn-outline-primary mr-1"
                 to={`/Menus/edit/${menu.id}`}
               >
-                <button class="button button1">Edit</button>
+                <button class="button button1" style={{marginTop:'15px'}}>Edit</button>
               </Link>
               <Link
                 class="btn btn-danger"
