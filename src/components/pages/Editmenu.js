@@ -32,26 +32,25 @@ const Editmenu = () => {
     setUser(result.data);
   };
   return (
-    {/*
-    <MDBContainer>
-      <MDBContainer >
-        <MDBCard style={{ marginTop: '10px' }}>
-          <MDBCardHeader>
+    <div>
+      <div >
+        <div style={{ marginTop: '10px' }}>
+          <div>
             <h3>ก่อนแก้ไข</h3>
 
-          </MDBCardHeader></MDBCard></MDBContainer>
+          </div></div></div>
 
-      <MDBCard className="text-center">
+      <div className="text-center">
 
         <div className="container py-4">
-          {/* <h1 className="display-4">User Id: {id}</h1> 
+         <h1 className="display-4">User Id: {Id}</h1> 
 
           <div ><h2>{menu.MenuName}</h2></div>
           <div > <img className="img-fluid " style={{ height: '150px' }} src={menu.img} /></div>
 
         </div>
 
-      </MDBCard>
+      </div>
 
       <div className="container" style={{ marginTop: '20px' }}>
         <div className="w-75 mx-auto shadow p-5">
@@ -95,7 +94,7 @@ const Editmenu = () => {
           </form>
         </div>
       </div>
-    </MDBContainer> */}
+    </div> 
   );
 };
 

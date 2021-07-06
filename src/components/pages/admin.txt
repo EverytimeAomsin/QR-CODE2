@@ -1,0 +1,123 @@
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+
+
+const Admin = () => {
+  const [menus, setMenu] = useState([]);
+
+  useEffect(() => {
+    document.title = "QR-Admin";
+    loadMenus();
+  }, []);
+
+  const loadMenus = async () => {
+    const result = await axios.get("http://localhost:3003/Menus");
+    setMenu(result.data.reverse());
+  };
+
+  const deleteMenu = async id => {
+    await axios.delete(`http://localhost:3003/Menus/${id}`);
+    loadMenus();
+  };
+
+  const [basicModal, setBasicModal] = useState(false);
+
+  const toggleShow = () => setBasicModal(!basicModal);
+
+  return (
+    <div>
+      <h1>test</h1>
+    </div>
+    <div className="container">
+      <div className="py-4">
+        <MDBBreadcrumb>
+          <MDBBreadcrumbItem>
+            <a href='/'>Home</a>
+          </MDBBreadcrumbItem>
+          <MDBBreadcrumbItem active>Admin  </MDBBreadcrumbItem>
+        </MDBBreadcrumb>
+        <MDBBtn className="btn btn-primary" href='/'>
+          <i class="fas fa-angle-double-left"></i> Back to Home
+        </MDBBtn  > <MDBBtn color='danger' className="btn btn-primary" href='/AddMenu'>
+          <i class="fas fa-plus" style={{ marginRight: '5px' }}></i> Add menu
+        </MDBBtn>
+        <div style={{ marginTop: '30px' }}></div>
+        <MDBCard >
+          <MDBCardBody>
+            <MDBTable align="middle" className="text-center">
+              <MDBTableHead>
+                <tr>
+                  <th scope='col' className='w-25'>
+                    ลำดับ
+                  </th>
+                  <th scope='col' className='w-25'>
+                    ร้านอาหาร
+                  </th>
+                  <th scope='col' className='w-25'>
+                    รูปภาพ
+                  </th>
+                  <th scope='col' className='w-25'>
+                    QRcode
+                  </th>
+                  <th scope='col' className='w-25'>
+                    Action
+                  </th>
+                </tr>
+              </MDBTableHead>
+              <MDBTableBody>
+                {menus.map((menu, index) => (
+                  <tr>
+                    <th scope="row"><h3>{index + 1}</h3></th>
+                    <td> <Link class=" mr-2" to={`/Monitor/${menu.id}`}><h3>{menu.MenuName}</h3></Link></td>
+                    <td><Link class=" mr-2" to={`/Monitor/${menu.id}`}><img className="img-fluid " style={{ width: '300px' }} src={menu.img} /></Link></td>
+                    <td><Link class=" mr-2" to={`/Monitor/${menu.id}`}><img className="img-fluid " style={{ width: '200px' }} src={menu.qr} /></Link></td>
+                    <td>
+                      <Link class="btn btn-primary mr-1" to={`/Monitor/${menu.id}`} style={{marginBottom:'3px'}}>
+                        View
+                      </Link>
+                      <Link style={{marginBottom:'3px'}}
+                        class="btn btn-outline-primary mr-1"
+                        to={`/Menus/edit/${menu.id}`}
+                      >
+                        Edit
+                      </Link>
+                      <MDBBtn onClick={toggleShow} color='danger'>Delete</MDBBtn>
+                      <MDBModal show={basicModal} getOpenState={(e) => setBasicModal(e)} tabIndex='-1'>
+                        <MDBModalDialog>
+                          <MDBModalContent>
+                            <MDBModalHeader>
+                              <MDBModalTitle>คุณแน่ใจแล้วใช่ไหม?</MDBModalTitle>
+                              <MDBBtn className='btn-close' color='none' onClick={toggleShow}></MDBBtn>
+                            </MDBModalHeader>
+                            <MDBModalBody>
+                              <MDBBtn color='info' size='lg' onClick={toggleShow} style={{marginRight:'10px'}}>
+                                Close
+                              </MDBBtn>
+                              <MDBBtn color='danger' size='lg' style={{marginleft:'10px'}}>  <Link 
+                                className="text-white"
+                                onClick={() => deleteMenu(menu.id)}
+                              >
+                               <MDBIcon fas icon="trash" /> Delete
+                              </Link></MDBBtn>
+                            </MDBModalBody>
+
+                          </MDBModalContent>
+                        </MDBModalDialog>
+                      </MDBModal>
+
+                    </td>
+
+                  </tr>
+                ))}
+              </MDBTableBody>
+            </MDBTable>
+          </MDBCardBody>
+        </MDBCard>
+      </div>
+                </div>
+                 
+  );
+};
+
+export default Admin;
