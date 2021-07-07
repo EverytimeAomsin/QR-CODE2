@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import '../../css/home.css'
-import '../../css/admin.css'
+import '../../css/admin2.css'
 
 const Home = () => {
   const [menus, setMenu] = useState([]);

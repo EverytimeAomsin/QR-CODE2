@@ -13,7 +13,7 @@ h1{
 /* For small devices (e.g. smartphones) */
 img {
     width: 100vw;
-    display: inline-block;
+
 }
 .responsive h1{
     margin: 10px;
@@ -27,13 +27,13 @@ img {
 /* For medium devices (e.g. tablets) */
 @media (min-width: 420px) {
     img {
-        max-width: 48%;
+        width: 100vw;
     }
 }
 
 /* For large devices (e.g. desktops) */
 @media (min-width: 760px) {
     img {
-        max-width: 24%;
+        width: 100vw;
     }
 }
