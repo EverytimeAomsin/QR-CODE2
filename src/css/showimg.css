@@ -1,27 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap'); /* font-family: 'Roboto', sans-serif; */
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap'); /* font-family: 'Roboto', sans-serif; */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"); /* font-family: 'Roboto', sans-serif; */
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap"); /* font-family: 'Roboto', sans-serif; */
 
-*{
+* {
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
 }
-h1{
+h1 {
     text-transform: uppercase;
     font-weight: bold;
 }
 /* For small devices (e.g. smartphones) */
 img {
     width: 100vw;
-
 }
-.responsive h1{
+.responsive h1 {
     margin: 10px;
-    
 }
-.responsive p{
+.responsive p {
     margin: 10px;
-    
 }
 
 /* For medium devices (e.g. tablets) */

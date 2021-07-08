@@ -25,7 +25,7 @@ const Monitor = () => {
   return (
     <div class="responsive">
         <h1>{Menu.MenuName}</h1>
-        <p>{Menu.Description} </p>
+        <p style={{backgroundColor:'white'}}>{Menu.Description} </p>
         <img className="img-fluid shadow-4"  src={Menu.img} />
     </div>
   );

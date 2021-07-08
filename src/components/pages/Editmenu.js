@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory, useParams, Link } from "react-router-dom";
 import '../../css/add.css'
+import '../../css/Edit.css'
 
 const Editmenu = () => {
   let history = useHistory();
   const { Id } = useParams();
-  const [menu, setUser] = useState({
+  const [menu, setMenu] = useState({
     MenuName: "",
     Description: "",
     img: ""
@@ -14,11 +15,11 @@ const Editmenu = () => {
 
   const { MenuName, Description, img } = menu;
   const onInputChange = e => {
-    setUser({ ...menu, [e.target.name]: e.target.value });
+    setMenu({ ...menu, [e.target.name]: e.target.value });
   };
 
   useEffect(() => {
-    loadUser();
+    loadMenu();
   }, []);
 
   const onSubmit = async e => {
@@ -27,49 +28,54 @@ const Editmenu = () => {
     history.push("/Admin");
   };
 
-  const loadUser = async () => {
+  const loadMenu = async () => {
     const result = await axios.get(`http://localhost:3003/Menus/${Id}`);
-    setUser(result.data);
+    setMenu(result.data);
   };
+
+  const deleteMenu = async id => {
+    await axios.delete(`http://localhost:3003/Menus/${id}`);
+    loadMenu();}
   return (
-    <div style={{ backgroundColor: '#A2DBFA' }}>
+    <div >
       <Link style={{ marginBottom: '3px', textDecoration: "none" }}
-        class="btn btn-outline-primary mr-1"
         to={`/Admin`}
-      ><button className="button button1" style={{ marginTop: '15px', marginLeft: '20px' }}>ย้อนกลับ</button></Link>
-      <div className="add" style={{ width: '100vw' }}>
+      ><button className="button button1" style={{ marginTop: '15px' }}>ย้อนกลับ</button></Link>
+      <div className="add" style={{ width: '100vw' ,backgroundColor: '#EEEEEE'  }}>
+      <img style={{maxWidth: '40%'}} src={menu.img} />
         <h1>Add menu</h1>
         <form onSubmit={e => onSubmit(e)}>
-          <p>MenuName : <input style={{ width: '90vw' }}
+        <h4 style={{ textAlign:"left", marginLeft:'10px'}}>ชื่อ : </h4><input style={{ width: '95vw' }}
             type="text"
             className="form-control form-control-lg"
             placeholder="Enter Your Name"
             name="MenuName"
             value={MenuName}
             onChange={e => onInputChange(e)}
-          /></p>
-          <p> Description : <textarea style={{ width: '90vw' }}
+          />
+         <h4 style={{ textAlign:"left", marginLeft:'10px'}}>Description : </h4> <textarea style={{ width: '95vw' }}
             type="text"
             className="form-control form-control-lg"
             placeholder="Enter Your Name"
             name="Description"
             value={Description}
             onChange={e => onInputChange(e)}
-          /></p>
-          <p> ที่อยู่รูป :
-            <input style={{ width: '90vw' }}
+          />
+          <h4 style={{ textAlign:"left", marginLeft:'10px'}}>ที่อยู่รูป : </h4>
+            <input style={{ width: '95vw' }}
               type="text"
-              className="form-control form-control-lg"
               placeholder="ที่อยู่รูป"
               name="img"
               value={img}
               onChange={e => onInputChange(e)}
-            /></p>
-          <div style={{ flexgrow: '4' }}>
-
-          </div>
-          <button className="button button1" style={{ marginTop: '15px' }}>ทำการแก้ไข</button>
-
+            />
+          <button className="button button1" style={{ marginTop: '30px' }}>ทำการแก้ไข</button>
+          <p><Link
+  
+                onClick={() => deleteMenu(menu.id)}
+              >
+                <button class="button button3">Delete</button>
+              </Link></p>
         </form>
       </div>
 

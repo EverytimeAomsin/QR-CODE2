@@ -1,0 +1,17 @@
+
+ p,textarea,form{
+    background-color: #EEEEEE;
+    
+    /*style={{ backgroundColor: '#A2DBFA' }}*/
+}
+textarea{
+    background: white
+}
+
+Link {
+    width: 33.33%
+}
+
+.imgpre{
+    max-width: 30%;
+}

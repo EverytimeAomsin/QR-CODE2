@@ -4,22 +4,21 @@ import { Link } from "react-router-dom";
 import '../../css/home.css'
 
 const Home = () => {
-  const [menus, setUser] = useState([]);
+  const [menus, setMenu] = useState([]);
 
   useEffect(() => {
     document.title = "QR-Home";
-    loadUsers();
+    loadMenus();
   }, []);
 
-  const loadUsers = async () => {
+  const loadMenus = async () => {
     const result = await axios.get("http://localhost:3003/Menus");
-    setUser(result.data.reverse());
+    setMenu(result.data.reverse());
   };
 
 
 
   return (
-    <div >
       <div>
         {menus.map((menu) => (
                  <div className="column">
@@ -31,7 +30,6 @@ const Home = () => {
                </div>
                 ))}
       </div>
-   </div>
   );
 };
 

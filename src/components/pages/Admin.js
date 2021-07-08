@@ -8,7 +8,7 @@ const Home = () => {
   const [menus, setMenu] = useState([]);
 
   useEffect(() => {
-    document.title = "QR-Home";
+    document.title = "QR-Admin";
     loadMenus();
   }, []);
 
@@ -24,32 +24,32 @@ const Home = () => {
 
   return (
     <div >
-       <Link style={{ marginBottom: '3px', textDecoration: "none" }}
-                class="btn btn-outline-primary mr-1"
-                to={`/`}
-              ><button className="button button1"  style={{ marginTop: '15px',marginLeft:'20px' }}>กลับหน้าแรก</button></Link> 
-       <Link style={{ marginBottom: '3px', textDecoration: "none" }}
-                class="btn btn-outline-primary mr-1"
-                to={`/AddMenu`}
-              ><button className="button button1"  style={{ marginTop: '15px',marginLeft:'20px' }}>เพิ่มเมนู</button></Link> 
+      <Link style={{ marginBottom: '3px', textDecoration: "none" }}
+        class="btn btn-outline-primary mr-1"
+        to={`/`}
+      ><button className="button button1" style={{ marginTop: '15px' }}>กลับหน้าแรก</button></Link>
+      <Link style={{ marginBottom: '3px', textDecoration: "none" }}
+        class="btn btn-outline-primary mr-1"
+        to={`/AddMenu`}
+      ><button className="button button1" style={{ marginTop: '15px'}}>เพิ่มเมนู</button></Link>
       <div>
         {menus.map((menu) => (
           <div className="column">
             <div className="content card" >
-              <Link to={`/${menu.id}`} ><img className="img-fluid " src={menu.img} /></Link>
-              <Link to={`/${menu.id}`} style={{ textDecoration: "none" }}><h2 >{menu.MenuName}</h2></Link>
-              <Link to={`/${menu.id}`} style={{ textDecoration: "none" }}><p>{menu.Description}</p></Link>
+              <Link to={`/${menu.id}`} ><img className="img-fluid " src={menu.Qr} /></Link>
+              <Link to={`/${menu.id}`} style={{ textDecoration: "none",color: 'black' }}><h2 >{menu.MenuName}</h2></Link>
+              <Link to={`/${menu.id}`} style={{ textDecoration: "none",color: 'black' }}><p>{menu.Description}</p></Link>
               <Link style={{ marginBottom: '3px', textDecoration: "none" }}
                 class="btn btn-outline-primary mr-1"
                 to={`/Menus/edit/${menu.id}`}
               >
-                <button class="button button1" style={{marginTop:'15px'}}>Edit</button>
+                <button class="button button1" style={{ marginTop: '15px' }}>Edit</button>
               </Link>
               <Link
-                class="btn btn-danger"
+               
                 onClick={() => deleteMenu(menu.id)}
               >
-                <button class="button button1">Delete</button>
+                <button class="button button3">Delete</button>
               </Link>
 
             </div>
