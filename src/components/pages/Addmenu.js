@@ -67,7 +67,7 @@ const AddMenu = () => {
               <p>
                 <h4 style={{ textAlign:"left", marginLeft:'30px'}}>ชื่อ : </h4><input style={{width: '90%'}} type="text" onChange={e => onInputChange(e)} placeholder="ใส่ชื่อร้าน" name="MenuName" value={MenuName} />
               </p>
-              <h4 style={{ textAlign:"left", marginLeft:'30px',marginTop:'8px'}}>Description</h4> <textarea style={{width: '90%'}} id="Description" placeholder="Enter Your Description"
+              <h4 style={{ textAlign:"left", marginLeft:'30px',marginTop:'8px'}}>Description : </h4> <textarea style={{width: '90%'}} id="Description" placeholder="Enter Your Description"
                 name="Description"
                 value={Description}
                 onChange={e => onInputChange(e)} rows={15} cols={60} />
@@ -92,7 +92,7 @@ const AddMenu = () => {
               }
             </div>
 
-            <div className="flex-parentbt  jc-center ">
+            <div className="flex-parentbt  jc-center " style={{marginTop:'15px'}}>
               <button className="button button1" type="button" onclick="{downloadQR}" onClick={downloadQR}> โหลด QR-CODE</button>
               <button className=" button button1">บันทึกเมนู</button>
 

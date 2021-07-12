@@ -41,7 +41,7 @@ const Home = () => {
               <Link to={`/${menu.id}`} style={{ textDecoration: "none",color: 'black' }}><p>{menu.Description}</p></Link>
               <Link style={{ marginBottom: '3px', textDecoration: "none" }}
                 class="btn btn-outline-primary mr-1"
-                to={`/Menus/edit/${menu.id}`}
+                to={`/AddMenu/${menu.id}`}
               >
                 <button class="button button1" style={{ marginTop: '15px' }}>Edit</button>
               </Link>

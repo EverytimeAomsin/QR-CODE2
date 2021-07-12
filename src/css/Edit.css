@@ -5,8 +5,16 @@
     /*style={{ backgroundColor: '#A2DBFA' }}*/
 }
 textarea{
-    background: white
+    background: white;
+    height: 104px;
 }
+@media only screen and (max-width: 1200px) {
+    textarea{
+      width: 400px;
+    }
+  
+  
+  }
 
 Link {
     width: 33.33%
